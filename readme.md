@@ -45,14 +45,6 @@ TODOS:
 - create a controller & try out simple index GETRequest & try to send simple HTTP-PostRequest []
 - Download Swagger []
 - See if i can get Swagger UI to show a documentation of my index page & endpoint methods
-- fix problem : - "gradle clean generateOpenApiDocs" doesn't run. ( * What went wrong:
-Execution failed for task ':forkedSpringBootRun'.
-> Cannot access input property 'workingDir' of task ':forkedSpringBootRun'. Accessing unreadable inputs or outputs is not supported. Declare the task as untracked by using Task.doNotTrackState(). For more information, please refer to https://docs.gradle.org/8.2.1/userguide/incremental_build.html#disable-state-tracking in the Gradle documentation.
-   > Failed to create MD5 hash for file content.
-) --> maybe this helps ?  tasks {
-  forkedSpringBootRun {
-        doNotTrackState("See https://github.com/springdoc/springdoc-openapi-gradle-plugin/issues/102")
-    }
 }
 
 Helpful Resources:
