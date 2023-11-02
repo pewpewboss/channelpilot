@@ -15,7 +15,7 @@ Questions:
 		 controller-code that has been defined via xml/yaml according to a swagger standard.
 	-> a well written API should be able to be automatically documented in Swagger UI.
 
-- How do i know if my Controller is Swagger-UI-compatible  (code convention?) ? []
+- How do i know if my Controller is Swagger-UI-compatible  (code convention?) ? [x]
 	-> https://swagger.io/docs/specification/about/
 
 -Does "'product' endpoint shall be versioned mean there should be different versions deployed?
@@ -23,7 +23,7 @@ Questions:
 
 - What is "rabbitmq" ?
 
-- How to intercept Errors so that i can have detailed info on what went wrong [ ] ?
+- How to intercept Errors so that i can have detailed info on what went wrong [] ?
 
 
 - Can i be creative concerning the Data Types and meaning of  x,y,z ? 
@@ -46,13 +46,16 @@ Thoughts:
 - In real world i'd probably have commit-messages start with a commit number
 - I thought about using the model as request parameters, which is also debatable, since DTO encapsulate, but produce overhead / but probably go for DTO since 2 versions are requested.
 - I'll go with URI versioning for now in one Controller for the sake of getting something running - think of having even 2 controllers (each vor a base URL ("/V1/V2") []
-
+- I should write a service now that is capable of writing a Product into a DB
+	-> Since they talk about a "local store" i'd guess going with the H2 (volatile) in memory DB is good enough 4 proof of concept
 
 TODOS:
 - create meaningful package Structure []
-- create a controller & try out simple index GETRequest & try to send simple HTTP-PostRequest []
-- Download Swagger []
-- See if i can get Swagger UI to show a documentation of my index page & endpoint methods
+- create a controller & try out simple index GETRequest & try to send simple HTTP-PostRequest [x]
+- Download Swagger [x]
+- See if i can get Swagger UI to show a documentation of my index page & endpoint methods [x]
+	->http://localhost:8080/swagger-ui/index.html
+	->http://localhost:8080/v3/api-docs
 }
 
 Helpful Resources:
