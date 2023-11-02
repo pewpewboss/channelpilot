@@ -30,6 +30,10 @@ Questions:
 
 - "The second endpoint is to receive product data in a JSON payload." Who recieves ? They recieve from our service or we recieve data ? ^.^
 
+- How do i version the two Post Requests ?
+ ->Versioning can be done in different ways: URI Versioning, Request Param Versioning, Header Versioning
+   https://www.springboottutorial.com/spring-boot-versioning-for-rest-services
+
 Thoughts:
 - I have created web/micro-services before & done it using the Spring-Framework
 - Create Git-Repo on Github & init git locally [x]
@@ -40,6 +44,8 @@ Thoughts:
 - I remember i can add annotations to ensure arguments are not null
 - Remember there are multiple ways to create a mapping, e.g. @GetMapping @RequestMapping(value = "/index", method = RequestMethod.GET)
 - In real world i'd probably have commit-messages start with a commit number
+- I thought about using the model as request parameters, which is also debatable, since DTO encapsulate, but produce overhead / but probably go for DTO since 2 versions are requested.
+- I'll go with URI versioning for now in one Controller for the sake of getting something running - think of having even 2 controllers (each vor a base URL ("/V1/V2") []
 
 
 TODOS:

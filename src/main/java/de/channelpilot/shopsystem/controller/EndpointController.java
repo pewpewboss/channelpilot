@@ -11,10 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.channelpilot.shopsystem.model.Product;
+import de.channelpilot.shopsystem.dtos.ProductDTO;
+import de.channelpilot.shopsystem.dtos.ProductDTOV2;
 import jakarta.validation.Valid;
 
 @RestController
@@ -32,11 +30,17 @@ public class EndpointController {
 		return "food: " + id;
 	}
 
-	@PostMapping(value = "/product")
+	@PostMapping(value = "v1/product")
 	@ResponseBody
-	public ResponseEntity<String> postProduct(@Valid @RequestBody Product p, Errors errors) {
-		
+	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTO p, Errors errors) {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
-		return ResponseEntity.ok("Thank you for supplying us with the product information");
+		return ResponseEntity.ok("Thank you for supplying using V1 & supplying us with the product information");
+	}
+
+	@PostMapping(value = "v2/product")
+	@ResponseBody
+	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTOV2 p, Errors errors) {
+		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
+		return ResponseEntity.ok("Thank you for using V2 & supplying us with the product information");
 	}
 }
