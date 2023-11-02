@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import de.channelpilot.shopsystem.model.Product;
+
 @RestController
 @RequestMapping("/products")
 public class EndpointController {
@@ -26,9 +31,15 @@ public class EndpointController {
 		return "food: " + id;
 	}
 
-	@PostMapping(value = "/product", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/product")
 	@ResponseBody
-	public String postProduct(@RequestBody String json) {
-		return "Thank you for providing us with " + json;
+	public String postProduct(@RequestBody Product p) {
+		String response = "";
+		try {
+			response = "Thank you for providing us with " + new ObjectMapper().writeValueAsString(p);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return response;
 	}
 }
