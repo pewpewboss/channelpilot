@@ -1,5 +1,8 @@
 package de.channelpilot.shopsystem.controller;
 
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,11 +16,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.channelpilot.shopsystem.dtos.ProductDTO;
 import de.channelpilot.shopsystem.dtos.ProductDTOV2;
+import de.channelpilot.shopsystem.model.Product;
+import de.channelpilot.shopsystem.services.ProductService;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/products")
 public class EndpointController {
+
+	@Autowired
+	private ProductService prodService;
+	@Autowired
+    private ModelMapper modelMapper;
 
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ResponseEntity<String> index() {
@@ -34,6 +44,8 @@ public class EndpointController {
 	@ResponseBody
 	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTO p, Errors errors) {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
+		Product product = modelMapper.map(p, Product.class);
+		prodService.saveOrUpdateProduct(product);
 		return ResponseEntity.ok("Thank you for supplying using V1 & supplying us with the product information");
 	}
 

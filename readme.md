@@ -33,7 +33,9 @@ Questions:
 - How do i version the two Post Requests ?
  ->Versioning can be done in different ways: URI Versioning, Request Param Versioning, Header Versioning
    https://www.springboottutorial.com/spring-boot-versioning-for-rest-services
-
+- How do i change the default JDBC URL when connecting to H2 console (localhost:8080/h2-console) ? []
+	-> on first startup shows "jdbc:h2:~/test" but it should be "jdbc:h2:~/testdb"
+	 
 Thoughts:
 - I have created web/micro-services before & done it using the Spring-Framework
 - Create Git-Repo on Github & init git locally [x]
@@ -56,7 +58,8 @@ TODOS:
 - See if i can get Swagger UI to show a documentation of my index page & endpoint methods [x]
 	->http://localhost:8080/swagger-ui/index.html
 	->http://localhost:8080/v3/api-docs
-}
+- Change default JDBC URL on initial connect to H2 console (localhost:8080/h2-console)  []
+
 
 Helpful Resources:
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api

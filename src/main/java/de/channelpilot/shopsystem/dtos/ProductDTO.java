@@ -1,17 +1,16 @@
 package de.channelpilot.shopsystem.dtos;
 
+import jakarta.annotation.Nonnull;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 public class ProductDTO {
 
-	@NotNull
+	@Nonnull
 	private Integer productID;
-	@NotNull
+	@Nonnull
 	@NotBlank
 	private String name;
-	@NotNull
-	@NotBlank
+	@Nonnull
 	private Double price;
 	private String description;
 	private String category;
