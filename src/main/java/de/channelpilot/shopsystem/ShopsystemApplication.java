@@ -1,4 +1,4 @@
-package com.example.demo;
+package de.channelpilot.shopsystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
