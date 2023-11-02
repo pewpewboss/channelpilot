@@ -1,11 +1,18 @@
 package de.channelpilot.shopsystem.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class Product {
 
+	@NotNull
 	private Integer id;
 
+	@NotNull
+	@NotBlank
 	private String name;
 
+	@NotNull
 	private Double price;
 
 	public Integer getId() {

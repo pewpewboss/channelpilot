@@ -23,6 +23,8 @@ Questions:
 
 - What is "rabbitmq" ?
 
+- How to intercept Errors so that i can have detailed info on what went wrong [ ] ?
+
 
 - Can i be creative concerning the Data Types and meaning of  x,y,z ? 
 
