@@ -59,10 +59,19 @@ TODOS:
 	->http://localhost:8080/swagger-ui/index.html
 	->http://localhost:8080/v3/api-docs
 - Change default JDBC URL on initial connect to H2 console (localhost:8080/h2-console)  []
-
+- Not sure yet about final design when it comes to DTOs & Entitys... Is it okay to create a Product within the controller (while doing the mapping) ?
+	Should the ProductService take "Products" to save ore ProductDTO's which internally in the ProductService are being mapped to Entities ?[]
+	...i guess the controller should be relative dumb and just recieve and return DTOs... do some research[]
+- Implement Authentication []
+- Implemnt rabbitMQ []
+- introduce interface IProduct [] (low prio for now)
 
 Helpful Resources:
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 - https://www.baeldung.com/spring-rest-openapi-documentation
 - https://springdoc.org
 - https://github.com/springdoc/springdoc-openapi-gradle-plugin
+- https://spring.io/guides/gs/messaging-rabbitmq/
+- https://docs.spring.io/spring-security/reference/features/authentication/password-storage.html
+- https://www.baeldung.com/spring-security-5-oauth2-login
+- 
