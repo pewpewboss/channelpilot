@@ -3,6 +3,7 @@ package de.channelpilot.shopsystem.controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,13 +47,15 @@ public class EndpointController {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
 		Product product = modelMapper.map(p, Product.class);
 		prodService.saveOrUpdateProduct(product);
-		return ResponseEntity.ok("Thank you for supplying using V1 & supplying us with the product information");
+		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}
 
 	@PostMapping(value = "v2/product")
 	@ResponseBody
 	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTOV2 p, Errors errors) {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
-		return ResponseEntity.ok("Thank you for using V2 & supplying us with the product information");
+		Product product = modelMapper.map(p, Product.class);
+		prodService.saveOrUpdateProduct(product);
+		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}
 }
