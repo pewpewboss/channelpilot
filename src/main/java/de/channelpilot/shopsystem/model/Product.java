@@ -7,7 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
+/**
+ * This entity defines The fields of the table "PRODUCTS" and is inted to be used in the persistence Layer
+ */
 @Entity
 @Table(name="PRODUCTS")
 public class Product {

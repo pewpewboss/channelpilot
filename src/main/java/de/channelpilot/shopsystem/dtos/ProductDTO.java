@@ -3,6 +3,9 @@ package de.channelpilot.shopsystem.dtos;
 import jakarta.annotation.Nonnull;
 import jakarta.validation.constraints.NotBlank;
 
+/**
+ * Used to encapsulate Data exchanged between the Client & Endpoint.
+ */
 public class ProductDTO {
 
 	@Nonnull

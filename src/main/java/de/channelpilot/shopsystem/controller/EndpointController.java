@@ -41,6 +41,12 @@ public class EndpointController {
 		return "food: " + id;
 	}
 
+	/**
+	 * V1 Enables us to recieve Data from a Client
+	 * @param p The ProductDTO defines a contract for the body if client if he wants to use this service. 
+	 * @param errors occur e.g. when body validation failed
+	 * @return Response OK or bad request
+	 */
 	@PostMapping(value = "v1/product")
 	@ResponseBody
 	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTO p, Errors errors) {

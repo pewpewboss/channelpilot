@@ -11,7 +11,6 @@ public class ProductDTOV2 {
 	@NotBlank
 	private String name;
 	@NotNull
-	@NotBlank
 	private Double price;
 	@NotNull
 	@NotBlank
