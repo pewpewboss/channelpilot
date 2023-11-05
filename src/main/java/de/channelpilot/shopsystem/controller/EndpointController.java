@@ -1,6 +1,9 @@
 package de.channelpilot.shopsystem.controller;
 
+import java.util.concurrent.TimeUnit;
+
 import org.modelmapper.ModelMapper;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import de.channelpilot.shopsystem.config.MessageConfig;
 import de.channelpilot.shopsystem.dtos.ProductDTO;
 import de.channelpilot.shopsystem.dtos.ProductDTOV2;
 import de.channelpilot.shopsystem.model.Product;
@@ -29,6 +33,9 @@ public class EndpointController {
 	private ProductService prodService;
 	@Autowired
     private ModelMapper modelMapper;
+	@Autowired
+	RabbitTemplate rabbitTemplate;
+
 
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ResponseEntity<String> index() {
@@ -53,6 +60,8 @@ public class EndpointController {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
 		Product product = modelMapper.map(p, Product.class);
 		prodService.saveOrUpdateProduct(product);
+	    rabbitTemplate.convertAndSend(MessageConfig.topicExchangeName, "foo.bar.baz", "Entity got saved");
+
 		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}
 
