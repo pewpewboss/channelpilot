@@ -60,8 +60,7 @@ public class EndpointController {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
 		Product product = modelMapper.map(p, Product.class);
 		prodService.saveOrUpdateProduct(product);
-	    rabbitTemplate.convertAndSend(MessageConfig.topicExchangeName, "foo.bar.baz", "Entity got saved");
-
+	    rabbitTemplate.convertAndSend(MessageConfig.TOPIC, "v1.product.saved", "Entity got saved");
 		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}
 
@@ -71,6 +70,7 @@ public class EndpointController {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
 		Product product = modelMapper.map(p, Product.class);
 		prodService.saveOrUpdateProduct(product);
+		rabbitTemplate.convertAndSend(MessageConfig.TOPIC, "v2.product.saved", "Entity got saved");
 		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}
 }

@@ -10,14 +10,14 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import de.channelpilot.shopsystem.messagingrabbitmq.Receiver;
+import de.channelpilot.shopsystem.messaging.Receiver;
 /**
  * Spring AMQP requires that the Queue, the TopicExchange, and the Binding be declared as top-level Spring beans in order to be set up properly.
  */
 @Configuration
 public class MessageConfig {
-	public static final String topicExchangeName = "spring-boot-exchange";
 
+	public static final String TOPIC = "spring-boot-exchange";
 	static final String queueName = "spring-boot";
 
 	/**
@@ -42,7 +42,7 @@ public class MessageConfig {
 	 */
 	@Bean
 	TopicExchange exchange() {
-		return new TopicExchange(topicExchangeName);
+		return new TopicExchange(TOPIC);
 	}
 
 	/**
@@ -54,8 +54,12 @@ public class MessageConfig {
 	 * @return
 	 */
 	@Bean
-	Binding binding(Queue queue, TopicExchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with("foo.bar.#");
+	Binding bindingV1(Queue queue, TopicExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with("v1.product.#");
+	}
+	@Bean
+	Binding bindingV2(Queue queue, TopicExchange exchange) {
+		return BindingBuilder.bind(queue).to(exchange).with("v2.product.#");
 	}
 
 	/**
