@@ -1,4 +1,4 @@
-package de.channelpilot.shopsystem.services;
+package de.channelpilot.shopsystem.services.product;
 
 import java.util.Optional;
 

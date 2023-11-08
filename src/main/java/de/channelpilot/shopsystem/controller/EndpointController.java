@@ -22,7 +22,7 @@ import de.channelpilot.shopsystem.config.MessageConfig;
 import de.channelpilot.shopsystem.dtos.ProductDTO;
 import de.channelpilot.shopsystem.dtos.ProductDTOV2;
 import de.channelpilot.shopsystem.model.Product;
-import de.channelpilot.shopsystem.services.ProductService;
+import de.channelpilot.shopsystem.services.product.ProductService;
 import jakarta.validation.Valid;
 
 @RestController

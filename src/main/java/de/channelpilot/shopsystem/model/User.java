@@ -32,6 +32,17 @@ public class User implements UserDetails {
     private Role role;
     
     
+    public User() {
+		// TODO Auto-generated constructor stub
+	}
+    
+	public User(String firstName, String lastName, String email, String password, Role role) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.role = role;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
