@@ -14,6 +14,10 @@ public class SignUpRequest {
 		this.password = password;
 	}
 
+	public SignUpRequest() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getFirstName() {
 		return firstName;
 	}

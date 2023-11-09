@@ -4,12 +4,15 @@ public class SigninRequest {
 
 	private String email;
 	private String password;
+
+	public SigninRequest() {
+		// TODO Auto-generated constructor stub
+	}
 	
 	public SigninRequest(String email, String password) {
 		this.setEmail(email);
 		this.setPassword(password);
 	}
-
 
 	public String getEmail() {
 		return email;

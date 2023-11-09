@@ -26,7 +26,7 @@ import de.channelpilot.shopsystem.services.product.ProductService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/products")
+@RequestMapping("/api")
 public class EndpointController {
 
 	@Autowired
@@ -36,16 +36,9 @@ public class EndpointController {
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 
-
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public ResponseEntity<String> index() {
 		return ResponseEntity.ok("Index");
-	}
-
-	@GetMapping(value = "food/{id}")
-	@ResponseBody
-	public String getFood(@PathVariable Integer id) {
-		return "food: " + id;
 	}
 
 	/**
