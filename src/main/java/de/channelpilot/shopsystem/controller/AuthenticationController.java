@@ -15,17 +15,17 @@ import de.channelpilot.shopsystem.services.jwt.JwtAuthenticationResponse;
 @RestController
 @RequestMapping("/api/v1/auth")
 public class AuthenticationController {
-	
-	@Autowired
-    private AuthenticationService authenticationService;
-    
-	@PostMapping("/signup")
-    public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody SignUpRequest request) {
-        return ResponseEntity.ok(authenticationService.signup(request));
-    }
 
-    @PostMapping("/signin")
-    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SigninRequest request) {
-        return ResponseEntity.ok(authenticationService.signin(request));
-    }
+	@Autowired
+	private AuthenticationService authenticationService;
+
+	@PostMapping("/signup")
+	public ResponseEntity<JwtAuthenticationResponse> signup(@RequestBody SignUpRequest request) {
+		return ResponseEntity.ok(authenticationService.signup(request));
+	}
+
+	@PostMapping("/signin")
+	public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SigninRequest request) {
+		return ResponseEntity.ok(authenticationService.signin(request));
+	}
 }

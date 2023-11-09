@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import de.channelpilot.shopsystem.messaging.Receiver;
 /**
  * Spring AMQP requires that the Queue, the TopicExchange, and the Binding be declared as top-level Spring beans in order to be set up properly.
+ *
  */
 @Configuration
 public class MessageConfig {

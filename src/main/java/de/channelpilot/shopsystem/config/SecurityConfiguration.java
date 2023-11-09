@@ -34,8 +34,10 @@ public class SecurityConfiguration {
     	http.headers().frameOptions().disable(); // This is needed to access /h2-console/ Just the requestMatcher is not sufficient.
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(request -> request.requestMatchers(new AntPathRequestMatcher("/api/v1/auth/**"), toH2Console())
-                        .permitAll().anyRequest().authenticated())
+                        .permitAll().anyRequest().authenticated()) // Authorize all HTTP requests, but auth itself
+
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+             // Add the JWT authentication filter before the UsernamePasswordAuthenticationFilter
                 .authenticationProvider(authenticationProvider()).addFilterBefore(
                         jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
