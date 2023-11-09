@@ -1,6 +1,5 @@
 package de.channelpilot.shopsystem.controller;
 
-import org.modelmapper.ModelMapper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 import de.channelpilot.shopsystem.config.MessageConfig;
 import de.channelpilot.shopsystem.dtos.ProductDTO;
 import de.channelpilot.shopsystem.dtos.ProductDTOV2;
-import de.channelpilot.shopsystem.model.Product;
 import de.channelpilot.shopsystem.services.product.ProductService;
 import jakarta.validation.Valid;
 
@@ -26,8 +24,6 @@ public class EndpointController {
 
 	@Autowired
 	private ProductService prodService;
-	@Autowired
-    private ModelMapper modelMapper;
 	@Autowired
 	RabbitTemplate rabbitTemplate;
 
@@ -46,8 +42,7 @@ public class EndpointController {
 	@ResponseBody
 	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTO p, Errors errors) {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
-		Product product = modelMapper.map(p, Product.class);
-		prodService.saveOrUpdateProduct(product);
+		prodService.saveOrUpdateProduct(p);
 	    rabbitTemplate.convertAndSend(MessageConfig.TOPIC, "v1.product.saved", "Entity got saved");
 		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}
@@ -56,8 +51,7 @@ public class EndpointController {
 	@ResponseBody
 	public ResponseEntity<String> postProduct(@Valid @RequestBody ProductDTOV2 p, Errors errors) {
 		if(errors.hasErrors()) return ResponseEntity.badRequest().body("Mandatory fields have not been sent");
-		Product product = modelMapper.map(p, Product.class);
-		prodService.saveOrUpdateProduct(product);
+		prodService.saveOrUpdateProduct(p);
 		rabbitTemplate.convertAndSend(MessageConfig.TOPIC, "v2.product.saved", "Entity got saved");
 		return ResponseEntity.status(HttpStatus.CREATED).body("Thank you for supplying using V1 & supplying us with the product information");
 	}

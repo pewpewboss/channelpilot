@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 /**
  * Used to encapsulate Data exchanged between the Client & Endpoint.
  */
-public class ProductDTO {
+public class ProductDTO implements IProduct{
 
 	@Nonnull
 	private Integer productID;
