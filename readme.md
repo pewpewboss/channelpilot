@@ -67,6 +67,8 @@ TODOS:
 - introduce interface IProduct [] (low prio for now)
 - you might want some different Messaging Queues / Topics in the future
 
+Import the Shopsystem.postman_collection into ur postman in order to test the API. Bear in mind (see what i did there?!) that u need to update the jwt token in ur request's body.
+
 Helpful Resources:
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
 - https://www.baeldung.com/spring-rest-openapi-documentation
