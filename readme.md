@@ -33,7 +33,7 @@ Questions:
 - How do i version the two Post Requests ?
  ->Versioning can be done in different ways: URI Versioning, Request Param Versioning, Header Versioning
    https://www.springboottutorial.com/spring-boot-versioning-for-rest-services
-- How do i change the default JDBC URL when connecting to H2 console (localhost:8080/h2-console) ? []
+- How do i change the default JDBC URL when connecting to H2 console (localhost:8080/h2-console) ? [x]
 	-> on first startup shows "jdbc:h2:~/test" but it should be "jdbc:h2:~/testdb"
 	 
 Thoughts:
@@ -52,19 +52,20 @@ Thoughts:
 	-> Since they talk about a "local store" i'd guess going with the H2 (volatile) in memory DB is good enough 4 proof of concept
 
 TODOS:
-- create meaningful package Structure []
+- create meaningful package Structure [x]
 - create a controller & try out simple index GETRequest & try to send simple HTTP-PostRequest [x]
 - Download Swagger [x]
 - See if i can get Swagger UI to show a documentation of my index page & endpoint methods [x]
 	->http://localhost:8080/swagger-ui/index.html
 	->http://localhost:8080/v3/api-docs
-- Change default JDBC URL on initial connect to H2 console (localhost:8080/h2-console)  []
+- Change default JDBC URL on initial connect to H2 console (localhost:8080/h2-console)  [x]
 - Not sure yet about final design when it comes to DTOs & Entitys... Is it okay to create a Product within the controller (while doing the mapping) ?
 	Should the ProductService take "Products" to save ore ProductDTO's which internally in the ProductService are being mapped to Entities ?[]
 	...i guess the controller should be relative dumb and just recieve and return DTOs... do some research[]
-- Implement Authentication []
-- Implemnt rabbitMQ []
+- Implement Authentication [x]
+- Implemnt rabbitMQ [x]
 - introduce interface IProduct [] (low prio for now)
+- you might want some different Messaging Queues / Topics in the future
 
 Helpful Resources:
 - https://www.baeldung.com/swagger-2-documentation-for-spring-rest-api
